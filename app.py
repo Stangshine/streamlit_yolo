@@ -30,6 +30,12 @@ if uploaded_file is not None:
   result = model(imgRGB, size=600)
   
   detect_class = result.pandas().xyxy[0] 
+
+  involley = len(detect_class[['name'] == 'In Volley'])
+  out = len(detect_class[['name'] == 'other'])
+
+  st.write("อยู่ในสนาม: ", involley)
+  st.write("อยู่นอกสนาม: ", out)
   
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
   
@@ -37,6 +43,7 @@ if uploaded_file is not None:
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
+
   
   
   
