@@ -31,8 +31,8 @@ if uploaded_file is not None:
   
   detect_class = result.pandas().xyxy[0] 
 
-  involley = len(detect_class[['name'] == 'In Volley'])
-  out = len(detect_class[['name'] == 'other'])
+  involley = len(detect_class[detect_class['name'] == 'In Volley'])
+  out = len(detect_class[detect_class['name'] == 'other'])
 
   st.write("อยู่ในสนาม: ", involley)
   st.write("อยู่นอกสนาม: ", out)
