@@ -31,10 +31,10 @@ if uploaded_file is not None:
   
   detect_class = result.pandas().xyxy[0] 
 
-  involley = len(detect_class[(detect_class['name'] == 'In Volley') and (detect_class['xmin'].int() < 2000)])
+  involley = detect_class[(detect_class['name'] == 'In Volley') and (detect_class['xmin'] < 2000)]
   out = len(detect_class[detect_class['name'] == 'other'])
 
-  st.write("อยู่ในสนาม: ", involley)
+  st.write("อยู่ในสนาม: ", len(involley))
   st.write("อยู่นอกสนาม: ", out)
   
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
