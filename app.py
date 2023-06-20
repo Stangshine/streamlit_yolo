@@ -31,9 +31,11 @@ if uploaded_file is not None:
   
   detect_class = result.pandas().xyxy[0] 
 
+  imgcenter = imgRGB.shape[1] /2
+
   involley = detect_class[(detect_class['name'] == 'In Volley')]
 
-  inhalf = detect_class[detect_class['xmin'] < 2000]
+  inhalf = detect_class[detect_class['xmin'] < imgcenter]
   
   out = len(detect_class[detect_class['name'] == 'other'])
   
